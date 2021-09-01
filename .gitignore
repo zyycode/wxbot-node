@@ -1,5 +1,6 @@
 node_modules
 
+# Visual Studio Code
 .history
 
 zyy-wx-bot.memory-card.json
