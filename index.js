@@ -4,10 +4,7 @@ const qrTerm = require('qrcode-terminal');
 // const fetch = require('node-fetch');
 const schedule = require('node-schedule');
 const { PuppetPadlocal } = require('wechaty-puppet-padlocal');
-
-const token = 'puppet_padlocal_3e302874a4f64bce9c0851c018544a95';
-
-const ROOM_NAME = '90';
+const { token, ROOM_NAME } = require('./const');
 
 const puppet = new PuppetPadlocal({
   token
@@ -66,18 +63,18 @@ function onScan(qrcode, status) {
 
 async function onLogin(user) {
   console.log(`${user.name()} login`);
-  schedule.scheduleJob('00 00 08 * * 0-6', () => {
-    sendDaily(1);
-  });
-  schedule.scheduleJob('00 30 11 * * 0-6', () => {
-    sendDaily(2);
-  });
-  schedule.scheduleJob('00 50 17 * * 0-6', () => {
-    sendDaily(3);
-  });
-  schedule.scheduleJob('00 00 00 * * 0-6', () => {
-    sendDaily(4);
-  });
+  // schedule.scheduleJob('00 00 08 * * 0-6', () => {
+  //   sendDaily(1);
+  // });
+  // schedule.scheduleJob('00 30 11 * * 0-6', () => {
+  //   sendDaily(2);
+  // });
+  // schedule.scheduleJob('00 50 17 * * 0-6', () => {
+  //   sendDaily(3);
+  // });
+  // schedule.scheduleJob('00 00 00 * * 0-6', () => {
+  //   sendDaily(4);
+  // });
   // schedule.scheduleJob('40 50 16 * * 1-5', sendDaily); //send daily on 16:50:40 every weekday
 }
 
@@ -131,19 +128,19 @@ async function onMessage(msg) {
 
     const arr = ['我好烦', '我好难过', '我很烦', '我很难过', '最近好难', '最近好烦'];
 
-    for (const item of arr) {
-      if (msgText.indexOf(item) > -1) {
-        room.say(
-          contact.name() +
-            ' 雪莱曾说过：“黑夜给了我一双黑色的眼睛，我去用它去寻找光明”，烦躁，难过的日子总是短暂的，快乐的日子终会来临 [加油]'
-        );
-        break;
-      }
-    }
+    // for (const item of arr) {
+    //   if (msgText.indexOf(item) > -1) {
+    //     room.say(
+    //       contact.name() +
+    //         ' 雪莱曾说过：“黑夜给了我一双黑色的眼睛，我去用它去寻找光明”，烦躁，难过的日子总是短暂的，快乐的日子终会来临 [加油]'
+    //     );
+    //     break;
+    //   }
+    // }
 
-    if (msgText === '难混') {
-      room.say(contact.name() + '打工人，加油 [加油][加油][加油]');
-    }
+    // if (msgText === '难混') {
+    //   room.say(contact.name() + '打工人，加油 [加油][加油][加油]');
+    // }
 
     if (msgText.indexOf('ghs') > -1 || msgText.indexOf('GHS') > -1) {
       room.say('富强、民主、文明、和谐，自由、平等、公正、法治，爱国、敬业、诚信、友善');
